@@ -1,0 +1,61 @@
+USE CS122
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Seatwork', 10, 0.20, 'EN11'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Quizzes', 4, 0.40, 'EN11'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Exams', 2, 0.40, 'EN11'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Seatwork', 5, 0.10, 'MA01'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Quizzes', 8, 0.50, 'MA01'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Exams', 1, 0.40, 'MA01'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Seatwork', 5, 0.15, 'FL10'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Quizzes', 10, 0.35, 'FL10'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Exams', 3, 0.50, 'FL10'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Seatwork', 6, 0.30, 'SC18'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Quizzes', 5, 0.40, 'SC18'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Exams', 1, 0.30, 'SC18'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Seatwork', 7, 0.20, 'PE45'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Quizzes', 5, 0.20, 'PE45'
+);
+
+INSERT INTO Criteria (type, number_of_requirements, weight, subjectID) VALUES (
+	'Exams', 4, 0.60, 'PE45'
+);

@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Class VALUES (
+	'Iron', 1819, 1, 10 
+);
+
+INSERT INTO Class VALUES (
+	'Gold', 1819, 1, 10
+);
+
+INSERT INTO Class VALUES (
+	'Silver', 1819, 1, 10
+);
+
+INSERT INTO Class VALUES (
+	'Bronze', 1819, 1, 10 
+);
+
+INSERT INTO Class VALUES (
+	'Copper', 1819, 1, 10 
+);

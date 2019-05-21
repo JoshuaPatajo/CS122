@@ -1,0 +1,109 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+	font-family: 'Montserrat';
+}
+
+#container {
+	width: 80%;
+	height: 70%;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+	text-align:center;
+}
+
+
+input, select {
+	height: 30px;
+	font-family: 'Montserrat';
+  width: 100%;
+}
+
+input[type="submit"] {
+	border: 1px solid black;
+  height: 35px;
+  width: 20%;
+  margin: 10px;
+}
+
+input[type="text"]:focus, select:focus {
+	outline: none;
+}
+
+button {
+  border: none;
+  font-family: 'Montserrat';
+  height: 35px;
+}
+
+#filters {
+  background-color: #dddddd;
+  padding: 20px;
+  margin: 10px auto;
+  width: 70%;
+  height: 350px;
+  text-align: center;
+}
+
+#filters div {
+  display: inline-block;
+  width: 40%;
+  height: 80%;
+  margin: 10px;
+}
+
+table[name="data"] {
+  width: 95%;
+  border-spacing: 0;
+  border-collapse: separate;
+  position: absolute;
+  top: 600px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  table-layout: auto;
+  word-wrap: normal;
+  transform:rotateX(180deg);
+  -ms-transform:rotateX(180deg);
+  -webkit-transform:rotateX(180deg);
+
+}
+
+th, td {
+	border: 2px solid #3C4454;
+}
+
+
+#wrapper {
+	width: 80%;
+	position: absolute;
+	top: 0;
+	bottom: -1100px;
+	left: 0;
+	right: 0;
+	margin: auto;
+	overflow-x: auto;
+	height: 100%;
+	transform:rotateX(180deg);
+	-ms-transform:rotateX(180deg);
+	-webkit-transform:rotateX(180deg);
+}
+
+@media screen and (max-width: 1000px) {
+  #back {
+    left: -60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  #back {
+    left: -90px;
+  }
+}

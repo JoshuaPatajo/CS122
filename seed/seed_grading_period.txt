@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Grading_Period VALUES (
+	'Iron', 1, 'EN11', '1'
+);
+
+INSERT INTO Grading_Period VALUES (
+	'Gold', 2, 'MA01', '2'
+);
+
+INSERT INTO Grading_Period VALUES (
+	'Silver', 3, 'FL10', '3'
+);
+
+INSERT INTO Grading_Period VALUES (
+	'Bronze', 4, 'Sc18', '4'
+);
+
+INSERT INTO Grading_Period VALUES (
+	'Copper', 5, 'PE45', '5'
+);

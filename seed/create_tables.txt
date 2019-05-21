@@ -1,0 +1,100 @@
+CREATE DATABASE IF NOT EXISTS CS122;
+
+USE CS122;
+
+CREATE TABLE Teacher (
+	teacherID INT NOT NULL AUTO_INCREMENT,
+	username VARCHAR(10) NOT NULL,
+	password VARCHAR(10) NOT NULL,
+	PRIMARY KEY (teacherID) 
+);
+
+CREATE TABLE Subject (
+	subjectID VARCHAR(4) NOT NULL,
+	title VARCHAR(10) NOT NULL,
+	PRIMARY KEY (subjectID)
+);
+
+CREATE TABLE Class (
+	section VARCHAR(10) NOT NULL,
+	school_year INT(4),
+	quarter INT(1),
+	year_level INT(1) NOT NULL,
+	PRIMARY KEY (section, school_year, quarter)
+);
+
+CREATE TABLE Criteria (
+	criteriaID INT NOT NULL AUTO_INCREMENT,
+	type VARCHAR(10) NOT NULL,
+	number_of_requirements INT(2) NOT NULL DEFAULT 1,
+	weight FLOAT(3, 2) NOT NULL,
+	subjectID VARCHAR(4) NOT NULL,
+	PRIMARY KEY (criteriaID),
+	FOREIGN KEY (subjectID) REFERENCES Subject(subjectID)
+);
+
+CREATE TABLE Student (
+	studentID INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(30) NOT NULL,
+	middle_initial VARCHAR(3),
+	last_name VARCHAR(20) NOT NULL,
+	sex ENUM('M', 'F'),
+	birthdate DATE,
+	birthplace VARCHAR(20),
+	phone_number VARCHAR(13),
+	address VARCHAR(255),
+	student_type ENUM('Undergraduate', 'Graduate'),
+	year_started YEAR(4),
+	grade_started INT(2),
+	year_expelled YEAR(4),
+	year_dropped YEAR(4),
+	year_graduated YEAR(4),
+	school_from VARCHAR(50),
+	school_to VARCHAR(50),
+	guardian_first_name VARCHAR(30),
+	guardian_last_name VARCHAR(20),
+	guardian_address VARCHAR(255),
+	emergency_first_name VARCHAR(30),
+	emergency_last_name VARCHAR(20),
+	emergency_phone_number VARCHAR(13),
+	emergency_address VARCHAR(255),
+	PRIMARY KEY (studentID)
+);
+
+CREATE TABLE Requirement (
+	requirementID INT NOT NULL AUTO_INCREMENT,
+	requirement_number INT(2) NOT NULL,
+	highest_possible_score INT(3) NOT NULL DEFAULT 1,
+	criteriaID INT NOT NULL,
+	PRIMARY KEY (requirementID),
+	FOREIGN KEY (criteriaID) REFERENCES Criteria(criteriaID)
+);
+
+CREATE TABLE Student_Grade (
+	studentID INT NOT NULL,
+	requirementID INT NOT NULL,
+	score INT(3) NOT NULL DEFAULT 0,
+	PRIMARY KEY (studentID, requirementID),
+	FOREIGN KEY (studentID) REFERENCES Student(studentID),
+	FOREIGN KEY (requirementID) REFERENCES Requirement(requirementID)
+);
+
+CREATE TABLE Class_Student (
+	section VARCHAR(10) NOT NULL,
+	studentID INT NOT NULL,
+	PRIMARY KEY (section, studentID),
+	FOREIGN KEY (section) REFERENCES Class(section),
+	FOREIGN KEY (studentID) REFERENCES Student(studentID)
+);
+
+CREATE TABLE Grading_Period (
+	section VARCHAR(10) NOT NULL,
+	studentID INT NOT NULL,
+	subjectID VARCHAR(4) NOT NULL,
+	teacherID INT NOT NULL,
+	PRIMARY KEY (section, studentID, subjectID, teacherID),
+	FOREIGN KEY (section) REFERENCES Class(section),
+	FOREIGN KEY (studentID) REFERENCES Student(studentID),
+	FOREIGN KEY (subjectID) REFERENCES Subject(subjectID),
+	FOREIGN KEY (teacherID) REFERENCES Teacher(teacherID)
+);

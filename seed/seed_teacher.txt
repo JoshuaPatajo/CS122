@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Teacher (username, password) VALUES (
+	'Elliot Mays', 'password'
+);
+
+INSERT INTO Teacher (username, password) VALUES (
+	'Adnaan Booth', 'password'
+);
+
+INSERT INTO Teacher (username, password) VALUES (
+	'Anabelle Holmes', 'password'
+);
+
+INSERT INTO Teacher (username, password) VALUES (
+	'Jaiden Edwards', 'password'
+);
+
+INSERT INTO Teacher (username, password) VALUES (
+	'Nyah Cohen', 'password'
+);

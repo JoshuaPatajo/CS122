@@ -1,0 +1,28 @@
+@font-face {
+  font-family: 'Fira Sans';
+  src: url("..\\assets\\Fira_Sans\\FiraSans-Bold.ttf")  format('truetype');
+}
+
+#header {
+  background-color:  #3C4454;
+  font-family: 'Fira Sans';
+  font-size: 30px;
+  color: #FFFFFF;
+  width: 100%;
+  position: fixed;
+  height: 35px;
+  padding: 10px;
+  z-index: 99999999;
+}
+
+img {
+  width: 25px;
+  height: 25px;
+}
+
+
+@media screen and (max-width: 400px) {
+  #header {
+    text-align: center;
+  }
+}

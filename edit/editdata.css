@@ -1,0 +1,114 @@
+@font-face {
+  font-family: 'Montserrat';
+  src: url("..\\assets\\Montserrat\\Montserrat-Regular.ttf")  format('truetype');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url("..\\assets\\Fira_Sans\\FiraSans-Bold.ttf")  format('truetype');
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat';
+}
+
+#container {
+  width: 60%;
+  height: 80%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+
+}
+
+input {
+  border:none;
+  border-bottom: 2px solid #3C4454;
+  font-family: 'Montserrat';
+  height: 40px;
+  margin-right: 20px;
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
+
+.group {
+  display: inline-block;
+}
+
+.group br {
+  line-height: 5%;
+}
+
+h1 {
+  color: #3C4454;
+}
+
+::placeholder {
+  color: #000000;
+  font-family: 'Montserrat';
+}
+
+input:focus {
+  outline: none;
+}
+
+input[name="middleinitial"] {
+  width: 50px;
+}
+
+input[name="sex"] {
+  width: 75px;
+}
+
+input[name="yearst"], input[name="yearex"] {
+  width: 100px;
+}
+
+input[name="yeargr"] {
+  width: 120px;
+}
+
+
+input[name="yeardr"] {
+  width: 150px;
+}
+
+input[name="dateofbirth"] {
+  width: 200px;
+}
+
+input[name="studenttype"] {
+  width: 300px;
+}
+
+input[name="address"], input[name = "pgaddress"], input[name = "eaddress"] {
+  width: 400px;
+}
+
+input[type="submit"] {
+  border: none;
+  margin-left: 45%;
+
+}
+
+@media screen and (max-width: 1000px) {
+  #back {
+    left: -60px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  input[name="address"], input[name="studenttype"], input[name = "pgaddress"], input[name = "eaddress"] {
+    width: 200px;
+  }
+  #back {
+    left: -80px;
+  }
+}

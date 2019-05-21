@@ -1,0 +1,99 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Arial';
+  font-size: 12px;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+#container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 70%;
+  margin: auto;
+
+  left: 30%;
+}
+
+table {
+  margin: 0 auto;
+  text-align: left;
+ }
+
+table[name="main"] {
+  margin-top: 100px;
+  display: block;
+}
+
+table[name="sub"] {
+  border: none;
+}
+
+td[name='grade'] {
+    border: none;
+}
+
+table[name='main'] th, table[name='main'] td {
+	border: 2px solid #3C4454;
+}
+
+
+#buttons {
+  position: relative;
+  margin-top: 15px;
+  left: 10%;
+}
+
+button {
+  position: relative;
+  border: none;
+  height: 40px;
+  font-family: 'Montserrat';
+  display: inline-block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#none {
+  position: relative;
+  margin-top: 200px;
+  width: 70%;
+  height: auto;
+  margin-left: 17%;
+  font-family: 'Montserrat';
+
+}
+
+@media screen and (max-width: 1000px) {
+  #container {
+    left: 25%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  #container {
+    left: 10%;
+  }
+
+}
+
+@media screen and (max-width: 600px) {
+  #container {
+    left: 0;
+  }
+
+}
+
+@media screen and (max-width: 400px) {
+  #container {
+    left: -40px;
+  }
+  button[name="printb"] {
+    left: 27%;
+    margin-top: 5px;
+  }
+}

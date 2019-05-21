@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Subject VALUES (
+	'EN11', 'Grammar'
+);
+
+INSERT INTO Subject VALUES (
+	'MA01', 'Algebra'
+);
+
+INSERT INTO Subject VALUES (
+	'FL10', 'El Fili'
+);
+
+INSERT INTO Subject VALUES (
+	'Sc18', 'Physics'
+);
+
+INSERT INTO Subject VALUES (
+	'PE45', 'Hockey'
+);

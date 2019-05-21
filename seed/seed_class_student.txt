@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Class_Student VALUES (
+	'Iron', 1
+);
+
+INSERT INTO Class_Student VALUES (
+	'Gold', 2
+);
+
+INSERT INTO Class_Student VALUES (
+	'Silver', 3
+);
+
+INSERT INTO Class_Student VALUES (
+	'Bronze', 4
+);
+
+INSERT INTO Class_Student VALUES (
+	'Copper', 5
+);

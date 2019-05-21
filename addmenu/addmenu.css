@@ -1,0 +1,83 @@
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Montserrat';
+  src: url("..\\assets\\Montserrat\\Montserrat-Regular.ttf")  format('truetype');
+}
+
+@font-face {
+  font-family: 'Fira Sans';
+  src: url("..\\assets\\Fira_Sans\\FiraSans-Bold.ttf")  format('truetype');
+}
+
+#container {
+  width: 80%;
+  height: 25%;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 20%;
+  right: 0;
+  margin: auto;
+}
+
+.card {
+  float: left;
+  text-transform: uppercase;
+  width: 35%;
+  height: 100px;
+  border: 1px solid #8F9599;
+  text-align: center;
+  line-height: 100px;
+  margin: 10px;
+  color: #8F9599;
+  font-family: 'Montserrat';
+  background-color: #FFFFFF;
+}
+
+
+
+@media screen and (max-width: 800px) {
+  #container {
+    left: 10%;
+  }
+  .card {
+    width: 40%;
+  }
+  #back {
+    left: -60px;
+  }
+}
+
+@media screen and (max-width: 650px) {
+  #container {
+    left: 10%;
+  }
+  .card {
+    width: 40%;
+  }
+  #back {
+    left: -60px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  #container {
+    width: 65%;
+    height: 40%;
+    left: 20%;
+  }
+  .card {
+    width: 60%;
+    font-size: 12px;
+  }
+
+  #back {
+    left: -60px;
+  }
+}

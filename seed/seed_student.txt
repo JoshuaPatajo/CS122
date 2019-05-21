@@ -1,0 +1,21 @@
+USE CS122
+
+INSERT INTO Student (first_name, last_name) VALUES (
+	'Gavin', 'Cervantes'
+);
+
+INSERT INTO Student (first_name, last_name) VALUES (
+	'Rome', 'Williamson'
+);
+
+INSERT INTO Student (first_name, last_name) VALUES (
+	'Javier', 'Dupont'
+);
+
+INSERT INTO Student (first_name, last_name) VALUES (
+	'Fahim', 'Barclay'
+);
+
+INSERT INTO Student (first_name, last_name) VALUES (
+	'Kamran', 'Peacock'
+);
