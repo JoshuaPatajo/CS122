@@ -46,7 +46,8 @@ $teacherID = $_SESSION['teacherID'];
 		echo"<tr><td>Subject</td><td>Class</td><td># of Students</td></tr>";
 		while($row = mysqli_fetch_assoc($result)){ //fetch_all, fetch_array
 		echo"<tr><td>{$row['subjectID']}</td><td>{$row['section']}</td><td>{$row['studentcount']}</td>
-		<td><a href=viewclass.php?subject={$row['subjectID']}&section={$row['section']}>View</a></td><td><a href=editclass.php?subject={$row['subjectID']}&section={$row['section']}>Edit</a></td></tr>";
+    <td><a href=viewclass.php?subject={$row['subjectID']}&section={$row['section']}>View</a></td><td><a href=editclass.php?subject={$row['subjectID']}&section={$row['section']}>Edit</a></td>
+    <td><a href=deleteclass.php?subjectID={$row['subjectID']}>Delete</a></td></tr>";
 		}
 		echo "</table></div>";
 	

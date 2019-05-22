@@ -5,6 +5,8 @@ $teacherID = $_SESSION['teacherID'];
 $subjectID = $_GET['subject'];
 $section = $_GET['section'];
 
+$_SESSION['subject'] = $subjectID;
+
 require_once '../assets/connect.php';
 
 $query = "SELECT * FROM Criteria WHERE subjectID = '$subjectID'";

@@ -132,7 +132,7 @@ session_start();
 		$stmt = mysqli_prepare($dbc, $query);
 		mysqli_stmt_execute($stmt);
 
-		$subject = trim($_POST["subject"]);
+		$subject = $_SESSION['subject'];
 
 		$query = "UPDATE Subject SET title='$title' WHERE subjectID='$subject'";
 		$stmt = mysqli_prepare($dbc, $query);
