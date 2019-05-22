@@ -72,8 +72,6 @@ if ($result->num_rows > 0) {
 		$param = trim($_POST["subject"])."";
 		$params = explode(" ", $param);
 
-		echo "<h1>$params[0]<h1>";
-
 		$query = "SELECT std.studentID, std.first_name, std.last_name FROM Student AS std, 
 		Grading_Period AS gp WHERE gp.studentID = std.studentID AND gp.teacherID = '$teacherID' AND 
 		gp.subjectID = '$params[0]' AND gp.section = '$params[1]'";

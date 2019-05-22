@@ -34,7 +34,7 @@ $teacherID = $_SESSION['teacherID'];
       <a href="../addmenu/addmenu.php"><div class="card hvr-float" ><i class="fas fa-user-plus"></i> Add Student</div></a>
       <a href="../addmenu-grade/addmenu-grade.php"><div class="card hvr-float"><i class="far fa-plus-square"></i> Add Grades</div></a>
       <a href="../search/search.php"><div class="card hvr-float"><i class="fas fa-search"></i> View Search</div></a>
-      <a href="../subject/subject-screen.php"><div class="card hvr-float"><i class="far fa-edit"></i> Edit Profile</div></a>
+      <a href="../class/class.php"><div class="card hvr-float"><i class="far fa-edit"></i> Edit Classes</div></a>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
