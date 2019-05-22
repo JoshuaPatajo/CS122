@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+$teacherID = $_SESSION['teacherID'];
+
+require_once '../assets/connect.php';
+
+$query = "SELECT title FROM Subject AS sbj, Grading_Period AS gp, Class as cl WHERE sbj.subjectID = gp.subjectID AND gp.teacherID = '$teacherID'";
+
+$result = mysqli_query($dbc, $query) or die();
+$subjects = mysqli_fetch_array($result);
+
  ?>
 <!DOCTYPE html>
 <html lang="en">
