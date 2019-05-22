@@ -2,7 +2,6 @@
 session_start();
 
 $teacherID = $_SESSION['teacherID'];
-echo $teacherID;
 ?>
 
 <!DOCTYPE html>
@@ -33,9 +32,9 @@ echo $teacherID;
     <div id="header"><img src="../assets/ths.png" alt=""> T.I.S.I.S</div>
     <div id="container">
       <a href="../addmenu/addmenu.php"><div class="card hvr-float" ><i class="fas fa-user-plus"></i> Add Student</div></a>
-      <a href="../grades/input-grades.php"><div class="card hvr-float"><i class="far fa-plus-square"></i> Add Grades</div></a>
+      <a href="../addmenu-grade/addmenu-grade.php"><div class="card hvr-float"><i class="far fa-plus-square"></i> Add Grades</div></a>
       <a href="../search/search.php"><div class="card hvr-float"><i class="fas fa-search"></i> View Search</div></a>
-      <a href="../subject/subject-screen.php"><div class="card hvr-float"><i class="far fa-edit"></i> Edit Grades</div></a>
+      <a href="../subject/subject-screen.php"><div class="card hvr-float"><i class="far fa-edit"></i> Edit Profile</div></a>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

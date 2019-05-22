@@ -32,6 +32,10 @@
         <h1>Student Information</h1>
 
 				<div class="group">
+					<label for ="section">Section</label><br>
+					<input type="text" name="section" value="">
+				</div>
+				<div class="group">
 					<label for ="firstname">First Name</label><br>
 					<input type="text" name="firstname" value="">
 				</div>

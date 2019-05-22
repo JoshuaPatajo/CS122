@@ -261,6 +261,18 @@ if(isset($_POST['submit'])){
             <a href='add.php'><button type='button' name='button'>Add Another Student</button></a>
             <a href='../menu/menu.php'><button type='button' name='button'>Back to Menu</button></a>";
 
+            $query = "SELECT studentID FROM Student ORDER BY studentID DESC LIMIT 1";
+            $result = mysqli_query($dbc, $query) or die();
+            $row = mysqli_fetch_array($result);
+
+            $section = trim($_POST["section"])."";
+            $studentID = $row['studentID'];
+            $query = "INSERT INTO Class_Student VALUES (?, ?)";
+
+            $stmt = mysqli_prepare($dbc, $query);
+            mysqli_stmt_bind_param($stmt, "si",  $section, $studentID);
+            mysqli_stmt_execute($stmt);
+
             mysqli_stmt_close($stmt);
             mysqli_close($dbc);
         }

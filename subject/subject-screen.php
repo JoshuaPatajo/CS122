@@ -49,14 +49,22 @@ $row = mysqli_fetch_array($result);
             echo "<option>" . $title . "<option>";
           }
           ?>
-				</select>
-        <div class="tab">
-				  <button class="tablinks" value="edit">Input</button>
-          <button class="tablinks" value="edit">View</button>
-			  	<button class="tablinks" value="vts">View Top Students</button>
-			  </div>
+        </select>
+        <div class="button-group">
+					<button type="submit" name="action" value="grades">Grades</button>
+					<button type="submit" name="action" value="criteria">Criteria</button>
+					<button type="submit" name="action" value="topstudents">Top Students</button>
+				</div>
 			</form>
-		</div>
+    </div>
+    
+    <?php
+
+    if(isset($_POST["grades"])) {
+      echo "WOOT";
+    }
+
+    ?>
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

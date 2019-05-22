@@ -42,48 +42,59 @@ $affected_rows = 0;
 //loop thru rows of data
 for($i = 0; $i < $count; $i++){
 
-	if(!empty($actualdata[$c]) && !empty($actualdata[$c+2])) {
-		$s_fname = $actualdata[$c];
-		$s_mname = $actualdata[$c+1];
-		$s_lname = $actualdata[$c+2];
-		$sex = $actualdata[$c+3];
-		$birthdate = $actualdata[$c+4];
-		$birthplace = $actualdata[$c+5];
-		$s_phonenumber = $actualdata[$c+6];
-		$s_address = $actualdata[$c+7];
-		$s_type = $actualdata[$c+8];
-		$yearstarted = $actualdata[$c+9];
-		$gradestarted = $actualdata[$c+10];
-		$yearexpelled = $actualdata[$c+11];
-		$yeardropped = $actualdata[$c+12];
-		$yeargraduated = $actualdata[$c+13];
-		$schoolfrom = $actualdata[$c+14];
-		$schoolto = $actualdata[$c+15];
-		$p_fname = $actualdata[$c+16];
-		$p_lname = $actualdata[$c+17];
-		$p_address = $actualdata[$c+18];
-		$e_fname = $actualdata[$c+19];
-		$e_lname = $actualdata[$c+20];
-		$e_phonenumber = $actualdata[$c+21];
-		$e_address = $actualdata[$c+22];
+	$section = $actualdata[$c];
+	$s_fname = $actualdata[$c+1];
+	$s_mname = $actualdata[$c+2];
+	$s_lname = $actualdata[$c+3];
+	$sex = $actualdata[$c+4];
+	$birthdate = $actualdata[$c+5];
+	$birthplace = $actualdata[$c+6];
+	$s_phonenumber = $actualdata[$c+7];
+	$s_address = $actualdata[$c+8];
+	$s_type = $actualdata[$c+9];
+	$yearstarted = $actualdata[$c+10];
+	$gradestarted = $actualdata[$c+11];
+	$yearexpelled = $actualdata[$c+12];
+	$yeardropped = $actualdata[$c+13];
+	$yeargraduated = $actualdata[$c+14];
+	$schoolfrom = $actualdata[$c+15];
+	$schoolto = $actualdata[$c+16];
+	$p_fname = $actualdata[$c+17];
+	$p_lname = $actualdata[$c+18];
+	$p_address = $actualdata[$c+19];
+	$e_fname = $actualdata[$c+20];
+	$e_lname = $actualdata[$c+21];
+	$e_phonenumber = $actualdata[$c+22];
+	$e_address = $actualdata[$c+23];
 
-		//inserting the student
-		$query = "INSERT INTO Student (studentID, first_name, middle_initial, last_name, sex, birthdate, birthplace, phone_number,
-		address, student_type, year_started, grade_started, year_expelled, year_dropped, year_graduated, school_from, school_to,
-		guardian_first_name, guardian_last_name, guardian_address, emergency_first_name, emergency_last_name,
-		emergency_phone_number, emergency_address) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	//inserting the student
+	$query = "INSERT INTO Student (studentID, first_name, middle_initial, last_name, sex, birthdate, birthplace, phone_number,
+	address, student_type, year_started, grade_started, year_expelled, year_dropped, year_graduated, school_from, school_to,
+	guardian_first_name, guardian_last_name, guardian_address, emergency_first_name, emergency_last_name,
+	emergency_phone_number, emergency_address) VALUES (NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
-		$stmt = mysqli_prepare($dbc, $query);
+	$stmt = mysqli_prepare($dbc, $query);
 
-		mysqli_stmt_bind_param($stmt, "ssssssssssissssssssssss",  $s_fname, $s_mname, $s_lname, $sex, $birthdate, $birthplace, $s_phonenumber,
-		$s_address, $s_type, $yearstarted, $gradestarted, $yearexpelled, $yeardropped, $yeargraduated, $schoolfrom, $schoolto,
-		$p_fname, $p_lname, $p_address, $e_fname, $e_lname, $e_phonenumber, $e_address);
+	mysqli_stmt_bind_param($stmt, "ssssssssssissssssssssss",  $s_fname, $s_mname, $s_lname, $sex, $birthdate, $birthplace, $s_phonenumber,
+	$s_address, $s_type, $yearstarted, $gradestarted, $yearexpelled, $yeardropped, $yeargraduated, $schoolfrom, $schoolto,
+	$p_fname, $p_lname, $p_address, $e_fname, $e_lname, $e_phonenumber, $e_address);
 
-		//execute
-		mysqli_stmt_execute($stmt) or die(mysqli_error($dbc));
+	//execute
+	mysqli_stmt_execute($stmt) or die(mysqli_error($dbc));
 
-		$affected_rows = mysqli_stmt_affected_rows($stmt);
-	}
+	$affected_rows = mysqli_stmt_affected_rows($stmt);
+
+	$query = "SELECT studentID FROM Student ORDER BY studentID DESC LIMIT 1";
+	$result = mysqli_query($dbc, $query) or die();
+	$row = mysqli_fetch_array($result);
+
+	$studentID = $row['studentID'];
+	$query = "INSERT INTO Class_Student VALUES (?, ?)";
+
+	$stmt = mysqli_prepare($dbc, $query);
+	mysqli_stmt_bind_param($stmt, "si",  $section, $studentID);
+	mysqli_stmt_execute($stmt);
+
 	$c += count($tableheadings);
 }
 

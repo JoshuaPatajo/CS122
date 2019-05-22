@@ -73,16 +73,21 @@ session_start();
                 }
               }
               else {
-                if(!empty($data[0]) && !empty($data[2])) {
-                  echo $data[0] . " " . $data[2] . "<br />";
+                if(!empty($data[1]) && !empty($data[3]) && !empty($data[0])) {
+                  echo $data[1] . " " . $data[3] . "<br />";
                   for($c = 0; $c < $num; $c++) {
-                    $actual[] = $data[$c];
+                    if(!empty($data[$c])) {
+                      $actual[] = $data[$c];
+                    }
+                    else {
+                      $actual[] = NULL;
+                    }
                   }
                 }
               }
               $row++;
               $_SESSION['tableh'] = $headings;
-              $_SESSION['actuald'] =$actual;
+              $_SESSION['actuald'] = $actual;
               
             }
             fclose($handle);
