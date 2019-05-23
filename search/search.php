@@ -172,7 +172,8 @@
         echo"<tr><td>StudentID</td><td>First Name</td><td>Last Name</td></tr>";
         while($row = mysqli_fetch_assoc($result)){ //fetch_all, fetch_array
           echo"<tr><td>{$row['studentID']}</td><td>{$row['first_name']}</td><td>{$row['last_name']}</td>
-          <td><a href=../info/info.php?ID={$row['studentID']}>View</a></td><td><a href=../edit/editdata.php?ID={$row['studentID']}>Edit</a></td></tr>";
+          <td><a href=../info/info.php?ID={$row['studentID']}>View</a></td><td><a href=../edit/editdata.php?ID={$row['studentID']}>Edit</a></td>
+          <td><a href=deletestudent.php?ID={$row['studentID']}>Delete</a></td></tr>";
         }
         echo "</table></div>";
     }

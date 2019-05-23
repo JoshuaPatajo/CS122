@@ -1,3 +1,8 @@
+<?php
+session_start();
+
+$teacherID = $_SESSION['teacherID'];
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -235,9 +240,21 @@ if(isset($_POST['submit'])){
     <div id="header"><img src="../assets/ths.png" alt=""> T.I.S.I.S</div>
     <div id="container">
       <?php
-      if(empty($data_missing)){
 
-        require '../assets/connect.php';
+      require '../assets/connect.php';
+      $section = trim($_POST["section"])."";
+      $inClass = false;
+      $query = "SELECT section FROM Grading_Period WHERE teacherID = '$teacherID'";
+      $result = mysqli_query($dbc, $query) or die("Bad a query");
+
+      while($row = mysqli_fetch_assoc($result)) {
+          if($section == $row['section']) {
+              $inClass = true;
+              break;
+          }
+      }
+
+      if(empty($data_missing) && $inClass){
 
 		//inserting the student
         $query = "INSERT INTO Student (studentID, first_name, middle_initial, last_name, sex, birthdate, birthplace, phone_number,
@@ -265,13 +282,40 @@ if(isset($_POST['submit'])){
             $result = mysqli_query($dbc, $query) or die();
             $row = mysqli_fetch_array($result);
 
-            $section = trim($_POST["section"])."";
             $studentID = $row['studentID'];
             $query = "INSERT INTO Class_Student VALUES (?, ?)";
 
             $stmt = mysqli_prepare($dbc, $query);
             mysqli_stmt_bind_param($stmt, "si",  $section, $studentID);
             mysqli_stmt_execute($stmt);
+
+            $query = "SELECT subjectID FROM Grading_Period WHERE section = '$section' AND teacherID = '$teacherID'";
+		    $result = mysqli_query($dbc, $query) or die("Bad a query");
+
+            while($row = mysqli_fetch_assoc($result)) {
+                $sid = $row['subjectID'];
+                $query = "SELECT criteriaID FROM Criteria WHERE subjectID = '$sid'";
+                $res = mysqli_query($dbc, $query) or die();
+
+                $query = "INSERT INTO Grading_Period VALUES (?, ?, ?, ?)";
+				$stmt = mysqli_prepare($dbc, $query);
+				mysqli_stmt_bind_param($stmt, "sisi",  $section, $studentID, $sid, $teacherID);
+				mysqli_stmt_execute($stmt);
+
+                while($r = mysqli_fetch_assoc($res)) {
+                    $cid = $r['criteriaID'];
+                    $query = "SELECT requirementID FROM Requirement WHERE criteriaID = $cid";
+                    $ser = mysqli_query($dbc, $query) or die();
+
+                    while($wor = mysqli_fetch_assoc($ser)) {
+                        $rid = $wor['requirementID'];
+                        $query = "INSERT INTO Student_Grade VALUES (?, ?, 0)";
+				        $stmt = mysqli_prepare($dbc, $query);
+				        mysqli_stmt_bind_param($stmt, "ii",  $studentID, $rid);
+				        mysqli_stmt_execute($stmt);
+                    }
+                }
+            }
 
             mysqli_stmt_close($stmt);
             mysqli_close($dbc);
@@ -283,7 +327,12 @@ if(isset($_POST['submit'])){
             mysqli_stmt_close($stmt);
             mysqli_close($dbc);
         }
-    } else {
+    } else if (!$inClass) {
+        echo "Student is not in a Class you handle<br>
+        <a href='add.php'><button type='button' name='button'>Add Another Student</button></a>
+        <a href='../menu/menu.php'><button type='button' name='button'>Back to Menu</button></a>";
+    }
+    else {
 
         echo 'You need to enter the following data<br />';
 
@@ -294,7 +343,7 @@ if(isset($_POST['submit'])){
         }
 
         mysqli_stmt_close($stmt);
-            mysqli_close($dbc);
+        mysqli_close($dbc);
 
     }
 

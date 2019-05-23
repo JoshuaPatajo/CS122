@@ -1,5 +1,7 @@
 <?php
 session_start();
+
+$teacherID = $_SESSION['teacherID'];
  ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -67,6 +69,19 @@ for($i = 0; $i < $count; $i++){
 	$e_phonenumber = $actualdata[$c+22];
 	$e_address = $actualdata[$c+23];
 
+	$inClass = false;
+	$query = "SELECT section FROM Grading_Period WHERE teacherID = '$teacherID'";
+	$result = mysqli_query($dbc, $query) or die("Bad a query");
+
+	while($row = mysqli_fetch_assoc($result)) {
+			if($section == $row['section']) {
+					$inClass = true;
+					break;
+			}
+	}
+
+	if($inClass) {
+
 	//inserting the student
 	$query = "INSERT INTO Student (studentID, first_name, middle_initial, last_name, sex, birthdate, birthplace, phone_number,
 	address, student_type, year_started, grade_started, year_expelled, year_dropped, year_graduated, school_from, school_to,
@@ -94,6 +109,38 @@ for($i = 0; $i < $count; $i++){
 	$stmt = mysqli_prepare($dbc, $query);
 	mysqli_stmt_bind_param($stmt, "si",  $section, $studentID);
 	mysqli_stmt_execute($stmt);
+
+	$query = "SELECT subjectID FROM Grading_Period WHERE section = '$section' AND teacherID = '$teacherID'";
+	$result = mysqli_query($dbc, $query) or die("Bad a query");
+
+	while($row = mysqli_fetch_assoc($result)) {
+			$sid = $row['subjectID'];
+			$query = "SELECT criteriaID FROM Criteria WHERE subjectID = '$sid'";
+			$res = mysqli_query($dbc, $query) or die();
+
+			$query = "INSERT INTO Grading_Period VALUES (?, ?, ?, ?)";
+			$stmt = mysqli_prepare($dbc, $query);
+			mysqli_stmt_bind_param($stmt, "sisi",  $section, $studentID, $sid, $teacherID);
+			mysqli_stmt_execute($stmt);
+
+			while($r = mysqli_fetch_assoc($res)) {
+					$cid = $r['criteriaID'];
+					$query = "SELECT requirementID FROM Requirement WHERE criteriaID = $cid";
+					$ser = mysqli_query($dbc, $query) or die();
+
+					while($wor = mysqli_fetch_assoc($ser)) {
+							$rid = $wor['requirementID'];
+							$query = "INSERT INTO Student_Grade VALUES (?, ?, 0)";
+							$stmt = mysqli_prepare($dbc, $query);
+							mysqli_stmt_bind_param($stmt, "ii",  $studentID, $rid);
+							mysqli_stmt_execute($stmt);
+					}
+			}
+	}
+}
+else {
+	echo $s_fname . " ". $s_lname. "is not in a Class you handle";
+}
 
 	$c += count($tableheadings);
 }
