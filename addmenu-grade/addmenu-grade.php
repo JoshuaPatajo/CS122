@@ -27,7 +27,7 @@
     <a href="../menu/menu.php"><div id="back"><i class="fas fa-arrow-left hvr-wobble-horizontal"></i></div></a>
     <div id="container">
       <a href="../add-grade/add-grade.php"><div class="card hvr-float" ><i class="fas fa-user"></i> Edit Individual Grade</div></a>
-      <a href="../addg/addg.php"><div class="card hvr-float"><i class="fas fa-users"></i> Edit by Group</div></a>
+      <a href="../addg-grade/add-grades.php"><div class="card hvr-float"><i class="fas fa-users"></i> Edit by Group</div></a>
 
     </div>
 

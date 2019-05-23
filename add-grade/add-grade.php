@@ -8,7 +8,7 @@ require_once '../assets/connect.php';
 $subject = array();
 $section = array();
 
-$query = "SELECT Subject.subjectID, Grading_Period.section FROM Subject, Grading_Period WHERE Grading_Period.subjectID=Subject.subjectID AND Grading_Period.teacherID='$teacherID'";
+$query = "SELECT DISTINCT Subject.subjectID, Grading_Period.section FROM Subject, Grading_Period WHERE Grading_Period.subjectID=Subject.subjectID AND Grading_Period.teacherID='$teacherID'";
 $result = $dbc->query($query);
 if ($result->num_rows > 0) {
 	// output data of each row

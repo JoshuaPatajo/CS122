@@ -32,7 +32,6 @@ $teacherID = $_SESSION['teacherID'];
     <div id="header"><img src="../assets/ths.png" alt=""> T.I.S.I.S</div>
       <a href="../menu/menu.php"><div id="back"><i class="fas fa-arrow-left hvr-wobble-horizontal"></i></div></a>
     <div id="container">
-		<h1>Show All Classes of The teacher<h1>
 		<?php
 
 		require_once '../assets/connect.php';
